@@ -1,9 +1,0 @@
-server:
-  port: 8081
-
-spring:
-  data:
-    mongodb:
-      # If you are using embedded MongoDB, don't need to declare the username and password.
-      uri: mongodb://localhost:27017
-      tls: false
