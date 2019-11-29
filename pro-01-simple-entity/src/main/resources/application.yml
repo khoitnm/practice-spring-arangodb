@@ -1,0 +1,21 @@
+server:
+  port: 8081
+
+spring:
+  data:
+    mongodb:
+      # The connection to AWS DocumentDB in sandbox is here: https://us-east-2.console.aws.amazon.com/docdb/home?region=us-east-2#cluster-details/kevin-poc-2019-10-18-00-46-21
+      # Please ask me (kevin.tran) for the password.
+      # It looks like you have to run it inside AWS (the same VPC with the AWS DocumentDB) in order to connect to DB.
+      # This is a guideline how to connect from outside VPC (Need an additional EC2): https://docs.aws.amazon.com/en_us/documentdb/latest/developerguide/connect-from-outside-a-vpc.html
+      #
+      # Note: the uri to documentdb in sandbox could be changed be cause we will destroy that cluster after a while.
+      # if you need, please create the new cluster for testing, but then destroy it to save us money, it's expensive!
+      uri: mongodb://adminpoc:<insertYourPassword>@kevin-poc-2019-10-18-00-46-21.cluster-cn7ir1tmkuua.us-east-2.docdb.amazonaws.com:27017/?ssl=true&ssl_ca_certs=rds-combined-ca-bundle.pem&replicaSet=rs0
+      database: poc-mongodb
+
+# Logging MongoDB
+#logging.level.org.springframework.data.mongodb.core.MongoTemplate: DEBUG
+#logging.level.org.springframework.data.document.mongodb: DEBUG
+#logging.level.org.springframework.boot.autoconfigure.mongo.embedded: DEBUG
+logging.level.org.mongodb: DEBUG
