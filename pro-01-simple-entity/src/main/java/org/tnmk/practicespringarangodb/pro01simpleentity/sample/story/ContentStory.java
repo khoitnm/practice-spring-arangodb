@@ -16,12 +16,10 @@ public class ContentStory {
 
     public ContentEntity create(ContentEntity contentEntity) {
         return contentRepository.save(contentEntity);
-//        throw new UnsupportedOperationException("TODO");
     }
 
     public Iterable<ContentEntity> findAll() {
         return contentRepository.findAll();
-//        throw new UnsupportedOperationException("TODO");
     }
 
 }

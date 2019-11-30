@@ -24,15 +24,23 @@ public class Initiation {
     @EventListener(ApplicationReadyEvent.class)
     public void init() {
         Iterable<ContentEntity> contentEntities = contentStory.findAll();
-        if (contentEntities.iterator().hasNext()) {
+        if (!contentEntities.iterator().hasNext()) {
             ContentEntity contentEntity = new ContentEntity();
             contentEntity.setName("Name_" + System.nanoTime());
             contentEntity.setContentSize(BigInteger.valueOf(System.nanoTime()));
             contentEntity.setCreateDateTime(Instant.now());//In later sample modules, we can configure to create this dateTime automatically.
 
             contentStory.create(contentEntity);
+            logger.info("There was no data yet, hence we created a new ContentEntity "+contentEntity);
         }
         contentEntities = contentStory.findAll();
-        logger.info("All Content entities: \n {}", contentEntities);
+        printContentEntities(contentEntities);
+    }
+
+    private void printContentEntities(Iterable<ContentEntity> contentEntities){
+        logger.info("All Content entities: \n");
+        contentEntities.forEach(item -> {
+            logger.info(item.toString());
+        });
     }
 }

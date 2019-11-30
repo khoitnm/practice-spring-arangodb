@@ -7,7 +7,7 @@ spring:
       host: localhost
       port: 8529
       username: root
-      password:
+      password: root
       database: pro-01-simple-entity
 
 # Logging DB
