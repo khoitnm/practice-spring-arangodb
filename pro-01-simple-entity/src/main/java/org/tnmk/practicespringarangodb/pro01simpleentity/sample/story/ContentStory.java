@@ -5,10 +5,6 @@ import org.springframework.stereotype.Service;
 import org.tnmk.practicespringarangodb.pro01simpleentity.sample.entity.ContentEntity;
 import org.tnmk.practicespringarangodb.pro01simpleentity.sample.repository.ContentRepository;
 
-import java.math.BigInteger;
-import java.time.Instant;
-import java.util.List;
-
 @Service
 public class ContentStory {
     private final ContentRepository contentRepository;
@@ -20,10 +16,12 @@ public class ContentStory {
 
     public ContentEntity create(ContentEntity contentEntity) {
         return contentRepository.save(contentEntity);
+//        throw new UnsupportedOperationException("TODO");
     }
 
-    public List<ContentEntity> findAll() {
+    public Iterable<ContentEntity> findAll() {
         return contentRepository.findAll();
+//        throw new UnsupportedOperationException("TODO");
     }
 
 }

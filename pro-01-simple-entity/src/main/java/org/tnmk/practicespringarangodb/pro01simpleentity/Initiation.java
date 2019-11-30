@@ -23,8 +23,8 @@ public class Initiation {
 
     @EventListener(ApplicationReadyEvent.class)
     public void init() {
-        List<ContentEntity> contentEntities = contentStory.findAll();
-        if (contentEntities.isEmpty()) {
+        Iterable<ContentEntity> contentEntities = contentStory.findAll();
+        if (contentEntities.iterator().hasNext()) {
             ContentEntity contentEntity = new ContentEntity();
             contentEntity.setName("Name_" + System.nanoTime());
             contentEntity.setContentSize(BigInteger.valueOf(System.nanoTime()));
@@ -33,6 +33,6 @@ public class Initiation {
             contentStory.create(contentEntity);
         }
         contentEntities = contentStory.findAll();
-        logger.info("All Content entities: {}\n items: {}",contentEntities.size(), contentEntities);
+        logger.info("All Content entities: \n {}", contentEntities);
     }
 }

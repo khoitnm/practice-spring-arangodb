@@ -1,16 +1,16 @@
 package org.tnmk.practicespringarangodb.pro01simpleentity.sample.entity;
 
 
+import com.arangodb.springframework.annotation.Document;
+import com.arangodb.springframework.annotation.Field;
 import java.math.BigInteger;
 import java.time.Instant;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.index.Indexed;
-import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.Field;
+
 
 //Collection name
 //If you want to reuse one Entity class for different collections based on the Repositories' names, you can use this solution: https://stackoverflow.com/questions/12274019/how-to-configure-mongodb-collection-name-for-a-class-in-spring-data
-//@Document("Content")
+@Document("Content")
 public class ContentEntity {
     /**
      * ObjectId vs Uuid: https://stackoverflow.com/questions/28895067/using-uuids-instead-of-objectids-in-mongodb
@@ -19,10 +19,6 @@ public class ContentEntity {
     @Id
     private String id;
 
-    /**
-     * Index column: https://www.baeldung.com/spring-data-mongodb-index-annotations-converter
-     */
-    @Indexed
     private String name;
 
     @Field("content_size")//custom field name

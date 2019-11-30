@@ -3,7 +3,6 @@ package org.tnmk.practicespringarangodb.pro01simpleentity
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.test.context.ActiveProfiles
 import org.tnmk.practicespringarangodb.pro01simpleentity.sample.entity.ContentEntity
-import org.tnmk.practicespringarangodb.pro01simpleentity.sample.repository.ContentRepository
 import org.tnmk.practicespringarangodb.pro01simpleentity.sample.story.ContentStory
 
 @ActiveProfiles("componenttest")
@@ -12,8 +11,8 @@ class SimpleContentStorySpec extends BaseSpecification{
     @Autowired
     ContentStory sampleStory;
 
-    @Autowired
-    ContentRepository contentRepository;
+//    @Autowired
+//    ContentRepository contentRepository;
 
 
     def 'can get Entity from DB after creating'(){
@@ -24,7 +23,7 @@ class SimpleContentStorySpec extends BaseSpecification{
         sampleStory.create(sampleEntity);
 
         when:
-        List<ContentEntity> contentEntities = contentRepository.findAll();
+        List<ContentEntity> contentEntities = sampleStory.findAll();
 
         then:
         !contentEntities.isEmpty()

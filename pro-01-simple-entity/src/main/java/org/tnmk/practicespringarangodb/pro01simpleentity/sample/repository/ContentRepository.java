@@ -1,7 +1,9 @@
 package org.tnmk.practicespringarangodb.pro01simpleentity.sample.repository;
 
-import org.springframework.data.mongodb.repository.MongoRepository;
+import com.arangodb.springframework.repository.ArangoRepository;
+import org.springframework.stereotype.Repository;
 import org.tnmk.practicespringarangodb.pro01simpleentity.sample.entity.ContentEntity;
 
-public interface ContentRepository extends MongoRepository<ContentEntity, String> {
+@Repository
+public interface ContentRepository extends ArangoRepository<ContentEntity, String> {
 }
