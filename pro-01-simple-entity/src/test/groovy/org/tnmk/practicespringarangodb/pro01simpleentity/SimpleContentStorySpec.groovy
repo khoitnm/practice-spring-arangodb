@@ -5,17 +5,11 @@ import org.springframework.test.context.ActiveProfiles
 import org.tnmk.practicespringarangodb.pro01simpleentity.sample.entity.ContentEntity
 import org.tnmk.practicespringarangodb.pro01simpleentity.sample.story.ContentStory
 
-import java.util.stream.Collectors
-
 @ActiveProfiles("componenttest")
 class SimpleContentStorySpec extends BaseSpecification{
 
     @Autowired
     ContentStory sampleStory;
-
-//    @Autowired
-//    ContentRepository contentRepository;
-
 
     def 'can get Entity from DB after creating'(){
         given:
