@@ -16,3 +16,6 @@ https://github.com/arangodb/spring-boot-starter/blob/master/pom.xml
 ## Storage Engine
 https://www.arangodb.com/docs/stable/architecture-storage-engines.html
 Since version 3.4, the default storage engine is `RocksDB`.
+
+## ArangoDB TestContainer
+https://github.com/ganchix/testcontainers-java-module-arangodb
