@@ -10,10 +10,6 @@
 
     <modules>
         <module>pro-01-simple-entity</module>
-        <module>pro-02-auditable-fields</module>
-        <module>pro-03-enum-field</module>
-        <module>pro-04-embedded-items</module>
-        <module>pro-05-no-embedded-one-to-many</module>
     </modules>
 
     <properties>
