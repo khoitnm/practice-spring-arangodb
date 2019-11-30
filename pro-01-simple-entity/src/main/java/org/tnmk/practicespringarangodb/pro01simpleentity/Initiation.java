@@ -26,7 +26,7 @@ public class Initiation {
         Iterable<ContentEntity> contentEntities = contentStory.findAll();
         if (!contentEntities.iterator().hasNext()) {
             ContentEntity contentEntity = new ContentEntity();
-            contentEntity.setName("Name_" + System.nanoTime());
+            contentEntity.setName("Initiation data_" + System.nanoTime());
             contentEntity.setContentSize(BigInteger.valueOf(System.nanoTime()));
             contentEntity.setCreateDateTime(Instant.now());//In later sample modules, we can configure to create this dateTime automatically.
 
