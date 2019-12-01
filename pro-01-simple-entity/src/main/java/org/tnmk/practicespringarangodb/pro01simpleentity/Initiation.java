@@ -81,7 +81,7 @@ public class Initiation {
     }
 
     private void printContentEntities(Iterable<Person> persons) {
-        logger.info("All persons: \n");
+        logger.info("All persons:");
         persons.forEach(item -> {
             logger.info(item.toString());
         });
