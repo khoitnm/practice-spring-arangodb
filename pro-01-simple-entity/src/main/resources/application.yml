@@ -11,4 +11,4 @@ spring:
       database: pro-01-simple-entity
 
 # Logging DB
-logging.level.com.arangodb: DEBUG
+logging.level.com.arangodb: INFO

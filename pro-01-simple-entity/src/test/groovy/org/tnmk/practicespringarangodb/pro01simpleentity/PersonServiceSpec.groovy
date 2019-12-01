@@ -2,24 +2,24 @@ package org.tnmk.practicespringarangodb.pro01simpleentity
 
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.test.context.ActiveProfiles
-import org.tnmk.practicespringarangodb.pro01simpleentity.sample.entity.ContentEntity
-import org.tnmk.practicespringarangodb.pro01simpleentity.sample.story.ContentStory
+import org.tnmk.practicespringarangodb.pro01simpleentity.sample.entity.Person
+import org.tnmk.practicespringarangodb.pro01simpleentity.sample.story.PersonService
 
 @ActiveProfiles("componenttest")
-class SimpleContentStorySpec extends BaseSpecification{
+class PersonServiceSpec extends BaseSpecification{
 
     @Autowired
-    ContentStory sampleStory;
+    PersonService sampleStory;
 
     def 'can get Entity from DB after creating'(){
         given:
-        ContentEntity sampleEntity = new ContentEntity(
-                name: "Entity_"+System.nanoTime()
+        Person sampleEntity = new Person(
+                fullName: "Entity_"+System.nanoTime()
         );
         sampleStory.create(sampleEntity);
 
         when:
-        Iterable<ContentEntity> contentEntities = sampleStory.findAll();
+        Iterable<Person> contentEntities = sampleStory.findAll();
 
         then:
         assert contentEntities.iterator().hasNext();

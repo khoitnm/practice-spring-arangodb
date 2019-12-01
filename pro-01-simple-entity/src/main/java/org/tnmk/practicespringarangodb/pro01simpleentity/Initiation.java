@@ -1,45 +1,88 @@
 package org.tnmk.practicespringarangodb.pro01simpleentity;
 
+import java.math.BigDecimal;
+import java.util.Iterator;
+import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
-import org.tnmk.practicespringarangodb.pro01simpleentity.sample.entity.ContentEntity;
-import org.tnmk.practicespringarangodb.pro01simpleentity.sample.story.ContentStory;
+import org.tnmk.practicespringarangodb.pro01simpleentity.sample.entity.City;
+import org.tnmk.practicespringarangodb.pro01simpleentity.sample.entity.Person;
+import org.tnmk.practicespringarangodb.pro01simpleentity.sample.story.CityService;
+import org.tnmk.practicespringarangodb.pro01simpleentity.sample.story.PersonService;
 
 import java.lang.invoke.MethodHandles;
 import java.math.BigInteger;
 import java.time.Instant;
-import java.util.List;
 
 @Service
 public class Initiation {
     private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
     @Autowired
-    private ContentStory contentStory;
+    private PersonService personService;
+
+    @Autowired
+    private CityService cityService;
 
     @EventListener(ApplicationReadyEvent.class)
     public void init() {
-        Iterable<ContentEntity> contentEntities = contentStory.findAll();
-        if (!contentEntities.iterator().hasNext()) {
-            ContentEntity contentEntity = new ContentEntity();
-            contentEntity.setName("Initiation data_" + System.nanoTime());
-            contentEntity.setContentSize(BigInteger.valueOf(System.nanoTime()));
-            contentEntity.setCreateDateTime(Instant.now());//In later sample modules, we can configure to create this dateTime automatically.
+        Person person = createPersonIfNotExist();
+        City homeCity = createCity();
+        City workingCity = createCity();
+        person.setHomeTown(homeCity);
+        person.setWorkingCity(workingCity);
+        person = personService.update(person);
 
-            contentStory.create(contentEntity);
-            logger.info("There was no data yet, hence we created a new ContentEntity "+contentEntity);
-        }
-        contentEntities = contentStory.findAll();
+        Iterable<Person> contentEntities = personService.findAll();
         printContentEntities(contentEntities);
     }
 
-    private void printContentEntities(Iterable<ContentEntity> contentEntities){
-        logger.info("All Content entities: \n");
-        contentEntities.forEach(item -> {
+    private City createCityIfNotExist() {
+        Iterator<City> cities = cityService.findAll().iterator();
+        if (!cities.hasNext()) {
+            City city = createCity();
+            logger.info("There was no data yet, hence we created a new City" + city);
+            return city;
+        } else {
+            return cities.next();
+        }
+    }
+
+    private City createCity(){
+        City city = constructCity();
+        return cityService.create(city);
+    }
+
+    private City constructCity(){
+        City city = new City();
+        city.setName("Initiation City_"+System.nanoTime());
+        city.setLatitude(BigDecimal.valueOf(System.nanoTime()));
+        city.setLongitude(BigDecimal.valueOf(System.nanoTime()));
+        return city;
+    }
+
+
+    private Person createPersonIfNotExist() {
+        Iterator<Person> persons = personService.findAll().iterator();
+        if (!persons.hasNext()) {
+            Person person = new Person();
+            person.setFullName("Initiation data_" + System.nanoTime());
+            person.setDateOfBirth(Instant.now());
+            person = personService.create(person);
+            logger.info("There was no data yet, hence we created a new Person " + person);
+            return person;
+        } else {
+            return persons.next();
+        }
+    }
+
+    private void printContentEntities(Iterable<Person> persons) {
+        logger.info("All persons: \n");
+        persons.forEach(item -> {
             logger.info(item.toString());
         });
     }
