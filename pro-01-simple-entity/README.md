@@ -1,5 +1,6 @@
 # Introduction
-In this example, we will create a simple sample relationship one-to-many (a City has many Persons), and there's no additional properties of that relationship.
+In this example, we will create a simple sample relationship one-to-many (a City has many Persons)
+, and there's no additional properties of that relationship, hence we don't need any `Edge` collection.
 
 # Design Note
 ## a User live in a City
