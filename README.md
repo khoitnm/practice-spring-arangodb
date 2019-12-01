@@ -10,9 +10,6 @@ https://www.arangodb.com/tutorials/spring-data/
 https://github.com/arangodb/spring-boot-starter/blob/master/pom.xml
 This project seems not to be updated frequently which is still using old Spring Boot version.
 
-## Spring Boot Starter
-https://github.com/arangodb/spring-boot-starter/blob/master/pom.xml
-
 ## Storage Engine
 https://www.arangodb.com/docs/stable/architecture-storage-engines.html
 Since version 3.4, the default storage engine is `RocksDB`.
