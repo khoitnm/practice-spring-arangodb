@@ -3,7 +3,7 @@ https://libraries.io/nuget/TestContainers.Container.Database.ArangoDb
 https://github.com/testcontainers/testcontainers-java
 
 https://github.com/ganchix/testcontainers-java-module-arangodb (this is convenient, but it's not updated)
-        I cannot use `testcontainers-java-module-arangodb` because it uses the old testctonainers version and was not updated in more than a whole year
+        I cannot use `testcontainers-java-module-arangodb` because it uses the old `TestContainers` version and was not updated in more than a whole year
         And it's inherited from the old version parent pom, hence I cannot override their dependencies.
         So I have to copy its code and override their dependencies.
 
