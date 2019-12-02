@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+    org.tnmk.practicespringarangodb.common.arangodb.ArangoDBAutoConfiguration\

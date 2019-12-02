@@ -1,2 +1,2 @@
 #!/bin/bash
-docker-compose -f ./mongodb/docker-compose.yml down
+docker-compose -f ./arangodb/docker-compose.yml down
