@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.tnmk.practicespringarangodb.common.util.IterableUtils;
 import org.tnmk.practicespringarangodb.pro01simpleentity.sample.entity.City;
 import org.tnmk.practicespringarangodb.pro01simpleentity.sample.entity.Person;
+import org.tnmk.practicespringarangodb.pro01simpleentity.sample.entity.PersonView;
 import org.tnmk.practicespringarangodb.pro01simpleentity.sample.story.CityService;
 import org.tnmk.practicespringarangodb.pro01simpleentity.sample.story.PersonService;
 
@@ -40,8 +41,13 @@ public class Initiation {
         Iterable<Person> foundPersons = personService.findAll();
         logger.info(IterableUtils.toStringEachLine("List of Persons in system (excluding related entities' information): -------------------------------------", foundPersons));
 
-        Iterable<Person> foundDetailPersons = personService.findAllDetailPerson();
+        //This method will FAIL!!!
+        Iterable<Person> foundDetailPersons = personService.findDetailPersons();
         logger.info(IterableUtils.toStringEachLine("List of Persons in system (including related entities' information): ", foundDetailPersons));
+
+        //This method will WORK!
+        Iterable<PersonView> foundDetailPersonViews = personService.findDetailPersonViews();
+        logger.info(IterableUtils.toStringEachLine("List of Persons in system (including related entities' information): ", foundDetailPersonViews));
 
         City foundLivingCity = cityService.findById(livingCity.getId()).get();
         logger.info("Found living city: " + foundLivingCity);

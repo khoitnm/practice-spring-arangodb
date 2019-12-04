@@ -51,3 +51,5 @@ org.springframework.data.mapping.MappingException: A reference must be of type S
 ```
 
 And when that error happened, it did NOT throw any exception!!! It just write exception into the log and return a null result!!!
+
+Note: however, when I remove @Ref, I can query it normally (you can see int `PersonView`.

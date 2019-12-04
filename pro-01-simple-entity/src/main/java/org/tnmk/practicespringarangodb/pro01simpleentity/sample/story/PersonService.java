@@ -3,6 +3,7 @@ package org.tnmk.practicespringarangodb.pro01simpleentity.sample.story;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.tnmk.practicespringarangodb.pro01simpleentity.sample.entity.Person;
+import org.tnmk.practicespringarangodb.pro01simpleentity.sample.entity.PersonView;
 import org.tnmk.practicespringarangodb.pro01simpleentity.sample.repository.PersonRepository;
 
 @Service
@@ -28,8 +29,13 @@ public class PersonService {
     /**
      * @return in the result list, each {@link Person} WILL HAVE all related information such as {@link Person#livingCity} and {@link Person#homeTown}.
      */
-    public Iterable<Person> findAllDetailPerson(){
-        Iterable<Person> persons = personRepository.findAllDetailPersons();
+    public Iterable<Person> findDetailPersons(){
+        Iterable<Person> persons = personRepository.findDetailPersons();
+        return persons;
+    }
+
+    public Iterable<PersonView> findDetailPersonViews(){
+        Iterable<PersonView> persons = personRepository.findDetailPersonViews();
         return persons;
     }
 
