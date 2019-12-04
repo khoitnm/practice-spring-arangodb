@@ -20,6 +20,7 @@ https://github.com/ganchix/testcontainers-java-module-arangodb
 # Challenges
 1. `arangodb-spring-boot` is not frequently updated and using old dependencies version (2019-12-04).
 2. `testcontainers-java-module-arangodb` is not frequently updated and using old dependencies version (2019-12-04). 
-Not only that, we extends from the parent `org.testcontainers:1.6.0` (old version) which makes us very difficult to override that old dependencies in client projects.
+    - Not only that, we extends from the parent `org.testcontainers:1.6.0` (old version) which makes us very difficult to override that old dependencies in client projects.
+    - And actually, **I still cannot make it work!?**
 3. Using `n+1` query for `@Ref` entities (eager loading), which makes that pattern ineffective. (I mentioned this in the README.md and sample code of `pro-01-simple-entity`) 
 4. Problem with "Mapping `RETURN merged` result to Java object" (I described in detail in the README.md of `pro-01-simple-entity`)
