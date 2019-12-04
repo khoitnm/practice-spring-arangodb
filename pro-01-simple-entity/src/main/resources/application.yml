@@ -11,4 +11,5 @@ spring:
       database: pro-01-simple-entity
 
 # Logging DB
-logging.level.com.arangodb: INFO
+#This will also shows query statements as well as other debug messages.
+logging.level.com.arangodb: DEBUG

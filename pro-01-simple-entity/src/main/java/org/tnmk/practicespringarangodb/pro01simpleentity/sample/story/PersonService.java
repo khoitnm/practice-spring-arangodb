@@ -18,8 +18,19 @@ public class PersonService {
         return personRepository.save(person);
     }
 
+    /**
+     * @return in the result list, each {@link Person} will NOT have information of {@link Person#livingCity} and {@link Person#homeTown}, they are lazy loading.
+     */
     public Iterable<Person> findAll() {
         return personRepository.findAll();
+    }
+
+    /**
+     * @return in the result list, each {@link Person} WILL HAVE all related information such as {@link Person#livingCity} and {@link Person#homeTown}.
+     */
+    public Iterable<Person> findAllDetailPerson(){
+        Iterable<Person> persons = personRepository.findAllDetailPersons();
+        return persons;
     }
 
     public Person update(Person person) {

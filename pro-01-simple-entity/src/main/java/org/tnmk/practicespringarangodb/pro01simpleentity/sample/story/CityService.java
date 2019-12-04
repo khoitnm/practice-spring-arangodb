@@ -1,5 +1,6 @@
 package org.tnmk.practicespringarangodb.pro01simpleentity.sample.story;
 
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.tnmk.practicespringarangodb.pro01simpleentity.sample.entity.City;
@@ -22,5 +23,9 @@ public class CityService {
 
     public Iterable<City> findAll(){
         return cityRepository.findAll();
+    }
+
+    public Optional<City> findById(String id) {
+        return cityRepository.findById(id);
     }
 }

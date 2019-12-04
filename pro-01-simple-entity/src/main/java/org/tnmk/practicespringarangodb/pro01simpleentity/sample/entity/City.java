@@ -26,7 +26,7 @@ public class City {
      * It's should not be used for updating data.
      */
     @Transient
-    private List<Person> persons;
+    private List<Person> livingPersons;
 
     @Override
     public String toString() {
@@ -35,6 +35,7 @@ public class City {
                 ", name='" + name + '\'' +
                 ", latitude=" + latitude +
                 ", longitude=" + longitude +
+                ", livingPersons=" + livingPersons +
                 '}';
     }
 
@@ -70,11 +71,11 @@ public class City {
         this.longitude = longitude;
     }
 
-    public List<Person> getPersons() {
-        return persons;
+    public List<Person> getLivingPersons() {
+        return livingPersons;
     }
 
-    public void setPersons(List<Person> persons) {
-        this.persons = persons;
+    public void setLivingPersons(List<Person> livingPersons) {
+        this.livingPersons = livingPersons;
     }
 }

@@ -20,11 +20,19 @@ public class Person {
     @Field("dateOfBirth")
     private Instant dateOfBirth;
 
-    @Ref
-    private City homeTown;
+    /**
+     * The city which this person is living in (but he could be born in another city)
+     */
+    //Note: if you use lazy = false, it will NOT do the JOIN query, it will do n+1 query instead. (I see it in the debug log of ArangoDB)
+    //So eager loading is a very bad design.
+    @Ref(lazy = true)
+    private City livingCity;
 
-    @Ref
-    private City workingCity;
+    /**
+     * The city this person was born in.
+     */
+    @Ref(lazy = true)
+    private City homeTown;
 
     @Override
     public String toString() {
@@ -32,8 +40,8 @@ public class Person {
                 "id='" + id + '\'' +
                 ", fullName='" + fullName + '\'' +
                 ", dateOfBirth=" + dateOfBirth +
+                ", livingCity=" + livingCity +
                 ", homeTown=" + homeTown +
-                ", workingCity=" + workingCity +
                 '}';
     }
 
@@ -69,11 +77,11 @@ public class Person {
         this.homeTown = homeTown;
     }
 
-    public City getWorkingCity() {
-        return workingCity;
+    public City getLivingCity() {
+        return livingCity;
     }
 
-    public void setWorkingCity(City workingCity) {
-        this.workingCity = workingCity;
+    public void setLivingCity(City livingCity) {
+        this.livingCity = livingCity;
     }
 }
