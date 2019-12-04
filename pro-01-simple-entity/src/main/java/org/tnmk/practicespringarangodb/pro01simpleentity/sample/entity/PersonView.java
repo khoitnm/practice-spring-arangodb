@@ -27,6 +27,7 @@ public class PersonView {
 
     /**
      * There's no Ref here, this field is used for querying only.
+     * TODO Question: when updating this model, will Transient field will be ignore and the existing data is intact, or it will be set to null?
      */
     @Transient
     private City livingCity;
