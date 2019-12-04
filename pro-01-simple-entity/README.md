@@ -49,7 +49,8 @@ Error:
 ```
 org.springframework.data.mapping.MappingException: A reference must be of type String, but got VPack type OBJECT! 
 ```
+The root cause: That `@Ref` field is lazy loading, so it only expect id value such as `"city/21345"` 
 
-And when that error happened, it did NOT throw any exception!!! It just write exception into the log and return a null result!!!
 
-Note: however, when I remove @Ref, I can query it normally (you can see int `PersonView`.
+And another bad news is: when that error happened, it did NOT throw any exception!!! It just write exception into the log and return a null result!!!
+Note: however, when I remove `@Ref`, I can query it normally (you can see int `PersonView`.
