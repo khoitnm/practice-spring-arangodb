@@ -44,7 +44,10 @@ public class Person {
 } 
 ```
     
+    
 Error:
 ```
 org.springframework.data.mapping.MappingException: A reference must be of type String, but got VPack type OBJECT! 
 ```
+
+And when that error happened, it did NOT throw any exception!!! It just write exception into the log and return a null result!!!
