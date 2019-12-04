@@ -8,14 +8,14 @@ You have a collection called users. Users live in homeTown and a homeTown is ide
 Now assume, that you have additional information about the homeTown, like the number of people living in it. It would be impractical to change each and every user document if this numbers changes. 
 Therefore it is NOT a good idea to hold the homeTown information inside the User
 
-# Some Notes
+# Challenges
 In arango-spring-data:3.2.3:
 
-## 1. Lazy loading
+## 1. Eager loading
 If you use lazy = false (you can try in `Person` class), it will NOT do the JOIN query, it will do n+1 query instead. (I see it in the debug log of ArangoDB)
-So eager loading is a very bad design.
+So eager loading is not a good design.
 
-## 2. Join query with merged result.
+## 2. Mapping `RETURN merged` result to Java object
 The custom query for Joining *does NOT really work* when we want to return a merged object.
 ```
     /**
